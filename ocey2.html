@@ -5,180 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Wasze Opinie</title>
     <style>
-        /* Reset i podstawowe style z drugiego pliku */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #111;
-            color: #fff;
-            min-height: 100vh;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #1a1a1a;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            height: 60px;
-        }
-
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        nav ul li a {
-            color: #ccc;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #1abc9c;
-        }
-
-        /* Sekcja główna - Twoje opinie */
-        .cover {
-            background: url('tlo.png') no-repeat center center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            color: white;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
-            padding: 40px 20px;
-            min-height: calc(100vh - 60px); /* wysokość minus navbar */
-            box-sizing: border-box;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-
-        .form-box {
-            background: rgba(0,0,0,0.6);
-            padding: 20px;
-            border-radius: 10px;
-            width: 320px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .form-box textarea {
-            margin-bottom: 10px;
-            padding: 8px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            width: 100%;
-            resize: none;
-        }
-
-        .form-box button {
-            background: #00aaff;
-            color: white;
-            border: none;
-            padding: 10px;
-            font-size: 1rem;
-            cursor: pointer;
-            border-radius: 5px;
-            width: 100%;
-            transition: background-color 0.3s ease;
-        }
-
-        .form-box button:hover {
-            background-color: #008ecc;
-        }
-
-        .stars {
-            display: flex;
-            gap: 5px;
-            margin-bottom: 10px;
-            cursor: pointer;
-        }
-
-        .star {
-            font-size: 1.8rem;
-            color: #ccc;
-            transition: color 0.2s;
-        }
-
-        .star.selected {
-            color: gold;
-        }
-
-        .opinie {
-            padding: 20px;
-            max-width: 600px;
-            margin: 40px auto;
-            background: #222;
-            border-radius: 10px;
-            color: #eee;
-        }
-
-        .opinia {
-            background: #333;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-
-        /* Responsywność navbar */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: Arial, sans-serif; background-color: #111; color: #fff; min-height: 100vh; }
+        nav { display: flex; justify-content: space-between; align-items: center; background-color: #1a1a1a; padding: 1rem 2rem; position: sticky; top: 0; z-index: 100; height: 60px; }
+        nav .logo { font-size: 1.5rem; font-weight: bold; color: #fff; }
+        nav ul { list-style: none; display: flex; gap: 1.5rem; }
+        nav ul li a { color: #ccc; text-decoration: none; font-weight: 500; transition: color 0.3s ease; }
+        nav ul li a:hover { color: #1abc9c; }
+        .cover { background: url('tlo.png') no-repeat center center/cover; display: flex; align-items: center; justify-content: center; flex-direction: column; color: white; text-shadow: 2px 2px 8px rgba(0,0,0,0.7); padding: 40px 20px; min-height: calc(100vh - 60px); box-sizing: border-box; }
+        h1 { font-size: 3rem; margin-bottom: 20px; }
+        .form-box { background: rgba(0,0,0,0.6); padding: 20px; border-radius: 10px; width: 320px; display: flex; flex-direction: column; align-items: center; }
+        .form-box textarea { margin-bottom: 10px; padding: 8px; border: none; border-radius: 5px; font-size: 1rem; width: 100%; resize: none; }
+        .form-box button { background: #00aaff; color: white; border: none; padding: 10px; font-size: 1rem; cursor: pointer; border-radius: 5px; width: 100%; transition: background-color 0.3s ease; }
+        .form-box button:hover { background-color: #008ecc; }
+        .stars { display: flex; gap: 5px; margin-bottom: 10px; cursor: pointer; }
+        .star { font-size: 1.8rem; color: #ccc; transition: color 0.2s; }
+        .star.selected { color: gold; }
+        .opinie { padding: 20px; max-width: 600px; margin: 40px auto; background: #222; border-radius: 10px; color: #eee; }
+        .opinia { background: #333; padding: 10px; margin-bottom: 10px; border-radius: 5px; }
         @media (max-width: 768px) {
-          nav {
-            flex-direction: column;
-            align-items: flex-start;
-            padding: 1rem;
-            height: auto;
-          }
-
-          nav .logo {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-          }
-
-          nav ul {
-            flex-direction: column;
-            width: 100%;
-            gap: 0;
-          }
-
-          nav ul li {
-            width: 100%;
-            margin: 0;
-          }
-
-          nav ul li a {
-            display: block;
-            padding: 1rem;
-            font-size: 1.2rem;
-            width: 100%;
-            color: #ccc;
-            border-top: 1px solid #222;
-          }
+          nav { flex-direction: column; align-items: flex-start; padding: 1rem; height: auto; }
+          nav .logo { font-size: 1.8rem; margin-bottom: 1rem; }
+          nav ul { flex-direction: column; width: 100%; gap: 0; }
+          nav ul li { width: 100%; margin: 0; }
+          nav ul li a { display: block; padding: 1rem; font-size: 1.2rem; width: 100%; color: #ccc; border-top: 1px solid #222; }
         }
     </style>
 </head>
@@ -191,7 +42,7 @@
     <li><a href="info.html">Informacje</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
     <li><a href="kontakt.html">Kontakt</a></li>
-    <li><a href="#opinieSection">Opinie</a></li> <!-- nowa zakładka -->
+    <li><a href="#opinieSection">Opinie</a></li>
   </ul>
 </nav>
 
@@ -275,9 +126,29 @@
         .then(querySnapshot => {
             querySnapshot.forEach(doc => {
                 const data = doc.data();
+
+                // Zamiana timestamp na czytelną datę
+                let dataText = "";
+                if (data.timestamp && data.timestamp.toDate) {
+                    const dateObj = data.timestamp.toDate();
+                    dataText = dateObj.toLocaleDateString("pl-PL", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit"
+                    });
+                }
+
                 const div = document.createElement('div');
                 div.className = 'opinia';
-                div.innerHTML = `<strong>${'★'.repeat(data.rating)}${'☆'.repeat(5 - data.rating)}</strong><br>${data.tekst}`;
+                div.innerHTML = `
+                    <strong>${'★'.repeat(data.rating)}${'☆'.repeat(5 - data.rating)}</strong>
+                    <br>
+                    ${data.tekst}
+                    <br>
+                    <small style="color:#aaa;">Dodano: ${dataText}</small>
+                `;
                 lista.appendChild(div);
             });
         })
