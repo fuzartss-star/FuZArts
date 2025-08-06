@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FuzArts</title>
+  <title>Kontakt</title>
   <meta name="description" content="FuZArts Web" />
   <meta name="keywords" content="grafika, portfolio, motaz, animacje"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
@@ -157,8 +157,67 @@
 
 <section>
   <h2>Kontakt</h2>
-  <p>Masz pytania? Skontaktuj się: <a href="mailto:fuzartss@gmail.com">fuzartss@gmail.com</a></p>
+  <p>Skonktaktuj się ze mną przez:</p>
+  <br>
+
+  <div style="display: flex; gap: 2rem; justify-content: center; text-align: center;">
+    
+    <div>
+      <div>Discord</div>
+      <a href="https://discordapp.com/users/551377023277203457" class="tooltip-target" target="_blank" rel="noopener noreferrer">
+        <img src="dc.png" alt="Discord" style="width: 255px; border-radius: 8px; transition: transform 0.3s ease;" />
+      </a>
+    </div>
+
+    <div>
+      <div>Behance</div>
+      <a href="https://www.behance.net/FuZArtss" class="tooltip-target" target="_blank" rel="noopener noreferrer">
+        <img src="bh.png" alt="Behance" style="width: 245px; border-radius: 8px; transition: transform 0.3s ease;" />
+      </a>
+    </div>
+
+    <div>
+      <div>Facebook</div>
+      <a href="https://www.facebook.com/FuZArts/" class="tooltip-target" target="_blank" rel="noopener noreferrer">
+        <img src="fb.png" alt="Facebook" style="width: 243px; border-radius: 8px; transition: transform 0.3s ease;" />
+      </a>
+    </div>
+
+  </div>
 </section>
+
+<!-- Tooltip -->
+<div id="tooltip" style="
+  position: fixed;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  pointer-events: none;
+  display: none;
+  z-index: 9999;
+">Kliknij</div>
+
+<script>
+const tooltip = document.getElementById('tooltip');
+const targets = document.querySelectorAll('.tooltip-target');
+
+targets.forEach(el => {
+  el.addEventListener('mousemove', e => {
+    tooltip.style.left = e.pageX + 15 + 'px';
+    tooltip.style.top = e.pageY + 15 + 'px';
+  });
+  el.addEventListener('mouseenter', () => {
+    tooltip.style.display = 'block';
+  });
+  el.addEventListener('mouseleave', () => {
+    tooltip.style.display = 'none';
+  });
+});
+</script>
+
+
 
 </body>
 </html>
