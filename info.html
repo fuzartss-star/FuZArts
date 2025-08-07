@@ -3,43 +3,243 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Informacje o mnie</title>
-  <meta name="description" content="FuZArts Web" />
-  <meta name="keywords" content="grafika, portfolio, motaz, animacje"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="shortcut icon" href="img/favicon.ico" />
-  <link rel="manifest" href="img/site.webmanifest" />
-
- <script async src="https://www.googletagmanager.com/gtag/js?id=G-688C25GMCV"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-688C25GMCV');
-</script>
+  <title>Informacje — FuzArts</title>
+  <meta name="description" content="FuZArts — montaż, grafika, animacje. Portfolio, usługi i narzędzia." />
+  <meta name="keywords" content="grafika, montaż, animacja, postprodukcja, portfolio" />
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root{
+      --bg:#0f0f12;
+      --card:#141416;
+      --muted:#aeb3b8;
+      --accent:#be1616;
+      --glass: rgba(255,255,255,0.03);
+      --radius:14px;
+      --maxw:1200px;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
       font-family: Arial, sans-serif;
       background-color: #111;
-      color: #fff;
+      color:#fff;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
     }
+
+    /* NAV */
+nav {
+  background-color: #1a1a1a;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+    .logo{
+      font-weight:700;
+      font-size:1.25rem;
+      letter-spacing:0.6px;
+      color:#fff;
+    }
+    .nav-links{display:flex; gap:18px; align-items:center}
+    .nav-links a{
+      color:var(--muted);
+      text-decoration:none;
+      font-weight:600;
+      padding:8px 12px;
+      border-radius:10px;
+      transition:all .18s ease;
+    }
+    .nav-links a:hover{ color:#fff; background: rgba(255,255,255,0.03); transform:translateY(-2px) }
+
+    /* HEADER HERO */
+    .hero{
+      max-width:var(--maxw);
+      margin:28px auto 16px;
+      display:grid;
+      grid-template-columns: 1fr 420px;
+      gap:24px;
+      padding:24px;
+      align-items:center;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      padding:20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .hero .intro h1{
+      margin:0 0 8px;
+      font-size:2rem;
+      line-height:1.05;
+    }
+    .hero .intro p{color:var(--muted); margin-bottom:16px}
+
+    .cta-row{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:10px;
+      background:var(--accent);
+      color: black;
+      font-weight:700;
+      text-decoration:none;
+      box-shadow: 0 6px 18px rgba(26,188,156,0.12);
+    }
+    .btn.ghost{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.04);
+      font-weight:600;
+    }
+
+    /* SKILLS & SERVICES */
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:18px;
+      margin-top:18px;
+    }
+
+    .skill{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .skill .icon{
+      min-width:48px;
+      height:48px;
+      border-radius:10px;
+      background:var(--glass);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .skill h4{margin:0 0 6px}
+    .skill p{margin:0; color:var(--muted); font-size:0.95rem}
+
+    /* TIMELINE / ABOUT */
+    .about{
+      max-width:var(--maxw);
+      margin:18px auto;
+      padding:0 24px 24px;
+    }
+    .about .wrap{ display:grid; grid-template-columns: 1fr 360px; gap:20px; align-items:start; }
+    .bio{
+      padding:18px;
+      border-radius:12px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .timeline{
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .timeline .item{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:12px;
+      border-radius:10px;
+      background:rgba(255,255,255,0.01);
+    }
+    .timeline .date{min-width:86px; color:var(--muted); font-weight:700; font-size:0.9rem}
+
+    /* PORTFOLIO */
+    .portfolio{
+      max-width:var(--maxw);
+      margin:24px auto;
+      padding:0 24px 48px;
+    }
+    .portfolio .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    .thumb {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  height: 180px;
+  background: linear-gradient(180deg, #101010, #0b0b0b);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(.2,.9,.3,1);
+  display: block;
+  color: transparent; /* ← zapobiega niebieskiemu alt-tekstowi */
+}
+
+.thumb:hover img {
+  transform: scale(1.08) rotate(-1.2deg);
+}
+
+.thumb .meta {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  background: rgba(0, 0, 0, 0.6); /* bardziej kontrastowe tło */
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #fff; /* biały tekst */
+}
+
+
+    /* FOOTER */
+    footer{
+      margin-top:36px;
+      padding:28px 20px;
+      border-top:1px solid rgba(255,255,255,0.03);
+      color:var(--muted);
+      text-align:center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width:1100px){
+      .hero{ grid-template-columns: 1fr 320px }
+      .grid-3{ grid-template-columns: repeat(2, 1fr) }
+      .portfolio .grid{ grid-template-columns: repeat(2, 1fr) }
+    }
+    @media (max-width:720px){
+      .hero{ grid-template-columns: 1fr; padding:18px; gap:12px }
+      .about .wrap{ grid-template-columns:1fr }
+      .grid-3{ grid-template-columns: 1fr }
+      .portfolio .grid{ grid-template-columns: 1fr }
+      nav .nav-inner{ padding:10px }
+      .nav-links{ display:none } /* prosty mobile: ukryj linki — możesz dodać hamburger menu */
+    }
+
+    /* Subtle float animation for icons */
+    @keyframes floaty { 0%{ transform:translateY(0) } 50%{ transform:translateY(-6px) } 100%{ transform:translateY(0) } }
+    .icon svg{ animation: floaty 4s ease-in-out infinite; }
+  
 
     nav {
       display: flex;
@@ -73,73 +273,13 @@
     }
 
     nav ul li a:hover {
-      color: #1abc9c;
+      color: #c01c16;
     }
-
-    section {
-      padding-top: 100px;
-      text-align: center;
-    }
-
-    section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    section p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
-
-    a {
-      color: #1abc9c;
-    }
-
-    #portfolio img:hover {
-      transform: scale(1.05);
-    }
-  
-@media (max-width: 768px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-    height: auto;
-  }
-
-  nav .logo {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
-
-  nav ul {
-    flex-direction: column;
-    width: 100%;
-    gap: 0;
-  }
-
-  nav ul li {
-    width: 100%;
-    margin: 0;
-  }
-
-  nav ul li a {
-    display: block;
-    padding: 1rem;
-    font-size: 1.2rem;
-    width: 100%;
-    color: #ccc;
-    border-top: 1px solid #222;
-  }
-
-  section {
-    padding-top: 100px;
-  }
-}
 
 </style>
 </head>
 <body>
+
 
 <nav>
   <div class="logo">FuzArts</div>
@@ -148,14 +288,211 @@
     <li><a href="info.html">Informacje</a></li>
     <li><a href="portfolio.html">Portfolio</a></li>
     <li><a href="kontakt.html">Kontakt</a></li>
-    <li><a href="ocey2.html">Opinie</a></li> <!-- dodane -->
+    <li><a href="ocey2.html">Opinie</a></li>
   </ul>
 </nav>
 
-<section>
-  <h2>Informacje</h2>
-  <p>Tu znajdziesz szczegóły mojej pracy, doświadczenia i wykorzystywanych narzędzi.</p>
-</section>
+
+<main>
+
+  <!-- HERO / QUICK INFO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="card intro">
+      <h1 id="hero-title">Montaż • Grafika • Animacja</h1>
+      <p>Jestem FuZArts i tworzę projekty graficzne, animacje jak i montaż — pomagam markom, twórcom i firmom przenieść przekaz na ekran z energią i estetyką.</p>
+
+      <div class="grid-3" aria-hidden="false">
+        <div class="skill">
+          <div class="icon" aria-hidden="true">
+            <!-- film SVG -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 7h4l2-3h6l2 3h4v10H3V7z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M7 14v-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+              <path d="M12 14v-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+              <path d="M17 14v-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div>
+            <h4>Montaż wideo</h4>
+            <p>Cięcia, korekcja dźwięku, dynamiczne przejścia wstawki i finalny render zgodnie z Twoją specyfikacją.</p>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="icon">
+            <!-- sparkle SVG -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2l1.8 4.2L18 8l-4.2 1.8L12 14l-1.8-4.2L6 8l4.2-1.8L12 2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+              <path d="M4 20l2-2 2 2-2 2-2-2zM18 20l2-2 2 2-2 2-2-2z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Grafika</h4>
+            <p>Grafika na social media jak i dla firm oraz korekcja zdjęć.</p>
+          </div>
+        </div>
+
+        <div class="skill">
+          <div class="icon">
+            <!-- tools SVG -->
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M14.7 10.3a6 6 0 1 0 0 8.485" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M9 9l6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <h4>Animacje</h4>
+            <p>Proste animacje 2d. Aninimowane loga proste materiały reklamowe.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:16px" class="cta-row">
+        <a class="btn" href="kontakt.html">Zamów projekt</a>
+        <a class="btn ghost" href="portfolio.html">Zobacz portfolio</a>
+      </div>
+    </div>
+
+    <!-- SIDE CARD: Tools & formats -->
+    <aside class="card" aria-label="narzedzia">
+      <h3 style="margin-top:0">Narzędzia & formaty</h3>
+      <p style="color:var(--muted); margin-bottom:12px">Najczęściej używane:</p>
+
+      <ul style="list-style:none; padding:0; margin:0; display:grid; gap:8px;">
+        <li style="display:flex; justify-content:space-between; background:rgba(130, 207, 42, 0.01); padding:10px; border-radius:8px;">
+          <span>Adobe Premiere Pro</span><strong style="color:var(--accent)">Montaż</strong>
+        </li>
+        <li style="display:flex; justify-content:space-between; background:rgba(255,255,255,0.01); padding:10px; border-radius:8px;">
+          <span>Lightroom Classic</span><strong style="color:var(--accent)">Korekta</strong>
+        </li>
+        <li style="display:flex; justify-content:space-between; background:rgba(124, 89, 89, 0.01); padding:10px; border-radius:8px;">
+          <span>After Effects</span><strong style="color:var(--accent)">Animacje</strong>
+        </li>
+        <li style="display:flex; justify-content:space-between; background:rgba(255,255,255,0.01); padding:10px; border-radius:8px;">
+          <span>Photoshop / Illustrator</span><strong style="color:var(--accent)">Grafika</strong>
+        </li>
+      </ul>
+
+      <p style="color:var(--muted); margin-top:12px; font-size:0.95rem">Dostarczam pliki w formacie wygodnym dla ciebie.</p>
+    </aside>
+  </section>
+
+  <!-- ABOUT & TIMELINE -->
+  <section class="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="bio card">
+        <h4 style="margin-top:14px">Proces współpracy</h4>
+        <ol style="color:var(--muted); margin-left:18px">
+          <li>Brief — Wstępna wycena i wizja</li>
+          <li>Draft — Pierwsza wersja oraz twoje uwagi</li>
+          <li>Poprawki — Poprawki według twoich oczekiwań</li>
+          <li>Final - Finalizacja, eksport i płatność</li>
+        </ol>
+
+        <div style="margin-top:14px; display:flex; gap:8px;">
+          <a class="btn" href="kontakt.html">Poproś o wycenę</a>
+          <a class="btn ghost" href="portfolio.html">Przykłady</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin:0 0 12px">Doświadczenie</h3>
+        <div class="timeline">
+          <div class="item card">
+            <div class="date">2025</div>
+            <div>
+              <strong>Freelancer</strong>
+              <div style="color:var(--muted)">Prace dla firm i influencerów</div>
+            </div>
+          </div>
+
+          <div class="item card">
+            <div class="date">2021</div>
+            <div>
+              <strong>Pierwsze projekty</strong>
+              <div style="color:var(--muted)">Pierwsze zlecenia </div>
+            </div>
+          </div>
+
+          <div class="item card">
+            <div class="date">2019</div>
+            <div>
+              <strong>Początek</strong>
+              <div style="color:var(--muted)">Pierwsza styczność z grafiką</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO GRID -->
+  <section id="portfolio" class="portfolio" aria-label="portfolio">
+    <h2 style="margin:0 0 12px; text-align:center">Prace</h2>
+    <p style="text-align:center; color:var(--muted); margin-bottom:18px">Kliknij, aby otworzyć większe podglądy / zamień obrazki na własne pliki.</p>
+
+    <div class="grid">
+      <!-- Replace src with your own thumbnails -->
+      <a class="thumb card" href="portfolio/project1.html">
+        <img loading="lazy" src="animacja.mp4" alt="Projekt 1 — montaż reklamowy">
+        <div class="meta">Animacja</div>
+      </a>
+
+      <a class="thumb card" href="portfolio/project2.html">
+        <img loading="lazy" src="logo.png" alt="Projekt 2 — animacja logo">
+        <div class="meta">Logo</div>
+      </a>
+
+      <a class="thumb card" href="portfolio/project3.html">
+        <img loading="lazy" src="mimi1.png" alt="Projekt 3 — montage">
+        <div class="meta">Miniaturka</div>
+      </a>
+
+      <a class="thumb card" href="portfolio/project4.html">
+        <img loading="lazy" src="banner.png" alt="Projekt 4 — motion design">
+        <div class="meta">Banner</div>
+      </a>
+
+      <a class="thumb card" href="portfolio/project5.html">
+        <img loading="lazy" src="wizytowka.png" alt="Projekt 5 — color grading">
+        <div class="meta">Wizytówka</div>
+      </a>
+
+      <a class="thumb card" href="portfolio/project6.html">
+        <img loading="lazy" src="plakat.png" alt="Projekt 6 — social">
+        <div class="meta">Plakat</div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div style="max-width:var(--maxw); margin:0 auto; padding:0 20px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;">
+      <div>
+        <strong>FuzArts</strong><div style="color:var(--muted)">Montaż • Animacja • Grafika</div>
+      </div>
+      <div style="text-align:right; color:var(--muted); font-size:0.95rem">
+        Masz pytanie? <a href="kontakt.html" style="color:var(--accent); text-decoration:none;">Napisz</a><br>
+        © <span id="year"></span> FuzArts
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // dynamic year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Fallback images if thumbnails missing (optional)
+  document.querySelectorAll('.thumb img').forEach(img => {
+    img.addEventListener('error', () => {
+      img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450"><rect width="100%" height="100%" fill="%230b0b0b"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%23aaa" font-family="Arial" font-size="20">Brak podglądu<br/>wstaw img/thumbX.jpg</text></svg>';
+      img.style.objectFit = 'contain';
+    });
+  });
+</script>
 
 </body>
 </html>
