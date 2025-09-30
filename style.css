@@ -41,9 +41,9 @@ header{position:sticky;top:0;z-index:50;background:rgba(10,10,12,.7);backdrop-fi
 .card .body{padding:16px}
 .meta{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:13px}
 
-.gallery{columns:1;column-gap:16px}
-@media(min-width:640px){.gallery{columns:2}}
-@media(min-width:1024px){.gallery{columns:3}}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(min-width:640px){.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}}
+@media(min-width:1024px){.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}}
 .gallery .item{break-inside:avoid;margin:0 0 16px;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:#121218}
 .gallery .item img{width:100%;display:block}
 .gallery .item .caption{padding:10px 12px;color:var(--muted);font-size:13px;border-top:1px solid var(--border)}
@@ -221,3 +221,16 @@ to{transform:translate3d(-30px,0,0)}}
   background:linear-gradient(45deg,#feda75,#fa7e1e,#d62976,#962fbf,#4f5bd5);
 }
 .contact-icon.brand svg{width:22px;height:22px}
+
+
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
